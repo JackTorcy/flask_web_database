@@ -1,0 +1,11 @@
+Put media queries into the site for functionality
+
+Find a way of uploading to online and hosting so that it can run as part of the portfolio
+
+
+
+
+
+
+
+

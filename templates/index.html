@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{%block content%}
+<!--?Option to add new record here-->
+<div id="topContent" class="container" style="display:grid; grid-template-columns: 1fr 1fr;">
+    <a id="addFilm" href="{{url_for('add')}}"
+        style="display:flex; justify-content: center; align-items: center; text-decoration: none;">
+        <button class="btn btn-outline-info">
+            <div id="addFilmTxt">Add Film</div>
+        </button>
+    </a>
+    <form method="GET" class="text-center">
+        <div class="form-group" style="margin: 25px 0px">
+            <input id="searchBar" style="display: inline; width: 80%;" type="search" name="search"
+                placeholder="Search by title, genre, year, duration" class="form-control"
+                value="{{ request.form['search'] }}"></input>
+            <button id="searchBtn" type="submit" class="btn btn-info">Search</button>
+        </div>
+    </form>
+</div>
+<div class="databaseCont">
+    <div class="databaseWindow">
+        {% for film in tblFilms %}
+        <a class="link" style="text-decoration: none; color: black;" href="{{url_for('film', id=film['filmID'])}}">
+            <div class="btn" id="filmSelection">
+                <!--?Displays title-->
+                <h2 style="display: inline; padding-right: 15px;">{{ film['title'] }}</h2>
+
+                <!--?Displays info (year, duration, rating, genre)-->
+
+                <span aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <h4>{{ film['ReleaseYear'] }}</h4>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <h4>{{ film['duration'] }}m</h4>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <h4>{{ film['rating'] }}</h4>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <h4>{{ film['genre'] }}</h4>
+                        </li>
+                    </ol>
+                </span>
+
+            </div>
+        </a>
+
+        <hr>
+        {% endfor %}
+    </div>
+    <a class="link" style="text-decoration: none; color: black;" href="{{url_for('refresh')}}">
+        <div class="btn" id="resetDatabase" onclick="return confirm('Are you sure you want to revert ALL changes?')">
+            <h2>Revert All Database Changes</h2>
+        </div>
+    </a>
+</div>
+{%endblock%}

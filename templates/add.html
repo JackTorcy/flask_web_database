@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    <div class="form-group">
+        <label for="title">Title of Film</label>
+        <input type="text" name="title" placeholder="Film title" class="form-control"
+            value="{{ request.form['title'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="ReleaseYear">Release Year</label>
+        <input type="text" name="ReleaseYear" placeholder="Release Year" class="form-control"
+            value="{{ request.form['ReleaseYear'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="rating">Age Rating</label>
+        <input type="text" name="rating" placeholder="Rating" class="form-control"
+            value="{{ request.form['rating'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="text" name="duration" placeholder="Duration (In minutes -- No units -- Example: 115)"
+            class="form-control" value="{{ request.form['duration'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" placeholder="Genre" class="form-control"
+            value="{{ request.form['genre'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="trailer">Trailer - Youtube Link</label>
+        <input type="text" name="trailer"
+            placeholder="Example: https://www.youtube.com/watch?v=C4YbpuGwQ&t=11s&ab_channel=Example" class="
+            form-control" value="{{ request.form['trailer'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="text" name="description" placeholder="Short one sentance summary of the movie" class="form-control"
+            value="{{ request.form['description'] }}"></textarea>
+    </div>
+
+
+    <div class="form-group" style="display: inline-block;">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+    <!-- <div class="form-group" style="display: inline-block;">
+        <a href="{{url_for('index')}}">
+            <button class="btn btn-outline-danger"
+                onclick="return confirm('Are you sure you want to cancel?')">Cancel</button>
+        </a>
+    </div> -->
+</form>
+{% endblock %}
